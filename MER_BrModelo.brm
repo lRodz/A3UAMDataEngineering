@@ -1,0 +1,37 @@
+
+ENTIDADES:
+1. Contas (Accounts):
+   account_id: Identificador único da conta (PK)
+   account_name: Nome da conta
+   account_type: Tipo da conta (ex: Corrente, Poupança)
+   initial_balance: Saldo inicial
+
+2. Categorias (Categories):
+   category_id: Identificador único da categoria (PK)
+   category_name: Nome da categoria
+   category_type: Tipo da categoria (Receita ou Despesa)
+
+3. Centros de Custo (CostCenters):
+   cost_center_id: Identificador único do centro de custo (PK)
+   cost_center_name: Nome do centro de custo
+   description: Descrição do centro de custo
+
+4. Formas de Pagamento (PaymentMethods):
+   payment_method_id: Identificador único da forma de pagamento (PK)
+   payment_type: Tipo de pagamento (ex: Dinheiro, Cartão)
+
+5. Movimentações Financeiras (FinancialMovements):
+   movement_id: Identificador único da movimentação (PK)
+   movement_date: Data da movimentação
+   amount: Valor da movimentação
+   description: Descrição da movimentação
+   account_id: Referência à tabela Accounts (FK)
+   category_id: Referência à tabela Categories (FK)
+   cost_center_id: Referência opcional à tabela CostCenters (FK)
+   payment_method_id: Referência à tabela PaymentMethods (FK)
+
+RELACIONAMENTOS:
+1. Accounts -> FinancialMovements (1:N)
+2. Categories -> FinancialMovements (1:N)
+3. CostCenters -> FinancialMovements (0:N)
+4. PaymentMethods -> FinancialMovements (1:N)

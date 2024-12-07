@@ -1,0 +1,31 @@
+
+Tabelas e Relacionamentos:
+1. Accounts:
+   - account_id INT PRIMARY KEY
+   - account_name VARCHAR(50)
+   - account_type VARCHAR(20)
+   - initial_balance FLOAT
+
+2. Categories:
+   - category_id INT PRIMARY KEY
+   - category_name VARCHAR(50)
+   - category_type VARCHAR(10)
+
+3. CostCenters:
+   - cost_center_id INT PRIMARY KEY
+   - cost_center_name VARCHAR(50)
+   - description VARCHAR(200)
+
+4. PaymentMethods:
+   - payment_method_id INT PRIMARY KEY
+   - payment_type VARCHAR(20)
+
+5. FinancialMovements:
+   - movement_id INT PRIMARY KEY
+   - movement_date DATE
+   - amount DECIMAL(12, 2)
+   - description VARCHAR(200)
+   - account_id INT FOREIGN KEY REFERENCES Accounts(account_id)
+   - category_id INT FOREIGN KEY REFERENCES Categories(category_id)
+   - cost_center_id INT FOREIGN KEY REFERENCES CostCenters(cost_center_id)
+   - payment_method_id INT FOREIGN KEY REFERENCES PaymentMethods(payment_method_id)
